@@ -2,7 +2,7 @@ body {
 	background: url("images/drumkit.jpeg");
     background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center;
+	background-position: center center;
 	background-attachment: fixed;
     font-family: 'Gloria Hallelujah', cursive;
 }
@@ -36,6 +36,7 @@ body {
 .btn:focus {
 	outline: 0 !important;
 }
+
 kbd {
 	background-color: transparent;
 	color: white;
@@ -51,9 +52,7 @@ span {
 	font-size: 16px;
 }
 
-@media all and (max-width: 800px) {
-	body {
-	}
+@media all and (max-width: 600px) {
 	.keys {
 		margin: 10px auto;
     	margin-top: 100px;
@@ -62,9 +61,7 @@ span {
 		margin: 2px;
 		margin-bottom: 20px;
 	}
-	
 	kbd {
 		display: none;
 	}
-
 }
