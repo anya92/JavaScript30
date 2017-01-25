@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Arsenal:400,700" rel="stylesheet">
+        <title>CSS variables + JS</title>
+    </head>
+    <body>
+        <h2>Update CSS variables with <span class='h1'>JS</span></h2>
+        <div class="controls">
+            <label for="spacing">Spacing: </label>
+            <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+            <label for="blur">Blur: </label>
+            <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+            <label for="base">Base color: </label>
+            <input type="color" name="base" value="#FFFBD0" >
+        </div>
+        <img src="images/photo.jpeg" alt="beach">
+
+        <script>
+            var inputs = document.querySelectorAll('.controls input'); // Node list
+            function updateHandler () {
+                var suffix = this.dataset.sizing || "";
+                document.documentElement.style.setProperty("--" + this.name, this.value + suffix);
+            }
+            inputs.forEach(function(input) {
+                return input.addEventListener('change', updateHandler);
+            });
+            inputs.forEach(function(input) {
+                return input.addEventListener('mousemove', updateHandler);
+            });
+        </script>
+    </body>
+</html>

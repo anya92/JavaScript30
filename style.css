@@ -1,0 +1,34 @@
+/* CSS variables */
+:root {
+    --base: #FFFBD0;
+    --spacing: 10px;
+    --blur: 10px;
+}
+
+img {
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur));
+    max-width: 700px;
+    height: 400px;
+}
+
+.h1 {
+    color: var(--base);
+}
+
+body {
+    text-align: center;
+    background: #336699;
+    font-size: 25px;
+    color: white;
+    font-family: 'Arsenal', sans-serif;;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.controls {
+    margin-bottom: 40px;
+}
