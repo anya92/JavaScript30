@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+		<title>JS Drum Kit</title>
+	</head>
+	<body>
+		<div class="container text-center">
+			<div class="keys">
+				<div class="col-md-6 col-xs-12">
+					<button class="key btn" data-key="65">
+						<kbd>A</kbd>
+						<span>CLAP</span>
+					</button>
+					<button class="key btn" data-key="83">
+						<kbd>S</kbd>
+						<span>CRASH</span>
+					</button>
+					<button class="key btn" data-key="68">
+						<kbd>D</kbd>
+						<span>HIHAT</span>
+					</button>
+					<button class="key btn" data-key="70">
+						<kbd>F</kbd>
+						<span>KICK</span>
+					</button>
+				</div>
+				<div class="col-md-6 col-xs-12">
+					<button class="key btn" data-key="72">
+						<kbd>H</kbd>
+						<span>OPENHAT</span>
+					</button>
+					<button class="key btn" data-key="74">
+						<kbd>J</kbd>
+						<span>RIDE</span>
+					</button>
+					<button class="key btn" data-key="75">
+						<kbd>K</kbd>
+						<span>SNARE</span>
+					</button>
+					<button class="key btn" data-key="76">
+						<kbd>L</kbd>
+						<span>TOM</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<audio data-key="65" src="sounds/clap.wav"></audio>
+		<audio data-key="83" src="sounds/crash.wav"></audio>
+		<audio data-key="68" src="sounds/hihat.wav"></audio>
+		<audio data-key="70" src="sounds/kick.wav"></audio>
+		<audio data-key="72" src="sounds/openhat.wav"></audio>
+		<audio data-key="74" src="sounds/ride.wav"></audio>
+		<audio data-key="75" src="sounds/snare.wav"></audio>
+		<audio data-key="76" src="sounds/tom.wav"></audio>
+
+		<script>
+			function playSound(event) { //dla klawiatury
+				var audio = document.querySelector("audio[data-key=\"" + event.keyCode + "\"]");
+				var key = document.querySelector(".key[data-key=\"" + event.keyCode + "\"]");
+				if(!audio) return;
+				audio.currentTime = 0;
+				audio.play(); //dźwięk przy kliknieciu
+				key.classList.add('playing'); 
+			}
+
+			function buttonSound() { //dla myszki
+				var audio = document.querySelector("audio[data-key=\"" + this.dataset.key + "\"]");
+				var key = document.querySelector(".key[data-key=\"" + this.dataset.key + "\"]");
+				audio.currentTime = 0;
+				audio.play(); 
+				key.classList.add('playing'); 
+			}
+
+			function removeTransition(event) {
+				if(event.propertyName !== 'transform') return; //stop it if it's not a transform
+				this.classList.remove('playing');
+			}
+
+			var buttons = document.querySelectorAll(".key");
+			buttons.forEach(function (button) {
+				return button.addEventListener("click", buttonSound);
+			});
+			
+			var keys = document.querySelectorAll('.key');
+			keys.forEach(function (key) {
+				return key.addEventListener("transitionend", removeTransition);
+			});
+
+			window.addEventListener("keydown", playSound);
+			
+		</script>
+	</body>
+</html>

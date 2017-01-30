@@ -1,0 +1,67 @@
+body {
+	background: url("images/drumkit.jpeg");
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.keys {
+    margin: 20px auto;
+    margin-top: 250px;
+	position: relative;
+}
+
+.key {
+	width: 100px;
+	height: 100px;
+	margin: 10px;
+	transition: all 0.07s;
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 100%;
+	border: 3px solid rgba(255,255,255,0.75);
+	color: white;
+	font-weight: bold;
+	display: inline-block;
+	
+}
+
+.playing {
+	transform: scale(1.1);
+	border-color: white;
+	box-shadow: 0 0 10px grey;
+}
+
+.btn:focus {
+	outline: 0 !important;
+}
+
+kbd {
+	background-color: transparent;
+	color: white;
+	font-size: 28px;
+	font-family: "Lucida Console", monospace;
+}
+
+span {
+	display: block;
+	text-align: center;
+	color: white;
+	margin-top: 2px;
+	font-size: 16px;
+}
+
+@media all and (max-width: 600px) {
+	.keys {
+		margin: 10px auto;
+    	margin-top: 100px;
+	}
+	.key {
+		margin: 2px;
+		margin-bottom: 20px;
+	}
+	kbd {
+		display: none;
+	}
+}
